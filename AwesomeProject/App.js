@@ -7,15 +7,15 @@
  */
 
 import React from 'react';
-import type {Node} from 'react';
+
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
+  Button,
   StyleSheet,
   Text,
-  useColorScheme,
+  ImageBackground,
   View,
+  Linking,
+  TextInput,
 } from 'react-native';
 
 import {
@@ -28,90 +28,66 @@ import {
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+
+
+const App = () => {
+
+
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style = {styles.Body}>
+        
+            <Text style = {[styles.Text,styles.setColorWhite]}>
+                MY READER
+             </Text>
+             <TextInput style = {styles.input}>
+
+            </TextInput>
+            <Button title='login' onPress={() => {Linking.openURL('#')}}></Button>
+            
+        
+            
+        
+
     </View>
-  );
-};
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        
+    
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  Body: {
+    
+    flex: 1,
+    alignItems : 'center',
+    justifyContent : 'center',
+    backgroundColor: 'blue'
+
+
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+   Text: {
+    
+    fontSize : 30,
+    fontWeight: 'bold',
+    padding : 30,  
+    
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  setColorWhite : {
+    color: '#ffffff'
   },
-  highlight: {
-    fontWeight: '700',
+  image: {
+    flex: 1,
+    justifyContent: "center"
+    
   },
+  input: {
+    justifyContent: "center",
+    borderColor: 'white',
+    
+    backgroundColor: 'white',
+    padding: '10',
+
+  },
+  
 });
 
 export default App;
